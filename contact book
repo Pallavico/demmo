@@ -1,0 +1,74 @@
+print("contact book")
+contact = {}
+
+def add_contact(name, phone):
+    if name in contact:
+        print(f"Contact {name} already exists.")
+    else:
+        contact[name] = phone
+        print(f"Contact {name} added with phone number {phone}.")
+
+def view_contacts():
+    if not contact:
+        print("No contacts available.")
+    else:
+        print("Contacts:")
+        for name, phone in contact.items():
+            print(f"{name}: {phone}")
+
+def search_contact(name):
+    if name in contact:
+        print(f"Contact {name}: {contact[name]}")
+    else:
+        print(f"Contact {name} not found.")
+
+def update_contact(name, phone):
+    if name in contact:
+        contact[name] = phone
+        print(f"Contact {name} updated with new phone number {phone}.")
+    else:
+        print(f"Contact {name} does not exist.")
+
+def delete_contact(name):
+    if name in contact:
+        del contact[name]
+        print(f"Contact {name} deleted.")
+    else:
+        print(f"Contact {name} does not exist.")
+
+def main():
+    while True:
+        print("\nContact Book Menu:")
+        print("1. Add Contact")
+        print("2. View Contacts")
+        print("3. Search Contact")
+        print("4. Update Contact")
+        print("5. Delete Contact")
+        print("6. Exit")
+        
+        choice = input("Enter your choice: ")
+        
+        if choice == '1':
+            name = input("Enter name: ")
+            phone = input("Enter phone number: ")
+            add_contact(name, phone)
+        elif choice == '2':
+            view_contacts()
+        elif choice == '3':
+            name = input("Enter name to search: ")
+            search_contact(name)
+        elif choice == '4':
+            name = input("Enter name to update: ")
+            phone = input("Enter new phone number: ")
+            update_contact(name, phone)
+        elif choice == '5':
+            name = input("Enter name to delete: ")
+            delete_contact(name)
+        elif choice == '6':
+            print("Exiting the contact book.")
+            break
+        else:
+            print("Invalid choice. Please try again.")
+
+if __name__ == "__main__":
+    main()
